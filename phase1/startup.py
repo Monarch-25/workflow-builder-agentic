@@ -32,11 +32,14 @@ def startup() -> None:
         (cfg.BASE_DIR / subdir).mkdir(parents=True, exist_ok=True)
 
     # ── Initialise clients ───────────────────────────────────────────────────
-    redis_client = redis.Redis(
-        host=cfg.REDIS_HOST,
-        port=cfg.REDIS_PORT,
-        db=cfg.REDIS_DB,
-    )
+    if cfg.REDIS_URL:
+        redis_client = redis.Redis.from_url(cfg.REDIS_URL)
+    else:
+        redis_client = redis.Redis(
+            host=cfg.REDIS_HOST,
+            port=cfg.REDIS_PORT,
+            db=cfg.REDIS_DB,
+        )
     bedrock_client = boto3.client(
         "bedrock-runtime", region_name=cfg.AWS_REGION
     )

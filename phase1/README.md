@@ -47,7 +47,8 @@ BEDROCK_CLAUDE_MODEL=anthropic.claude-sonnet-4-5
 BEDROCK_EMBED_MODEL=amazon.titan-embed-text-v2:0
 LOG_LLM_REQUESTS=false   # set true to log Bedrock request payloads
 
-# Redis (local)
+# Redis (pick one style)
+# REDIS_URL=redis://localhost:6380/0
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_DB=0
