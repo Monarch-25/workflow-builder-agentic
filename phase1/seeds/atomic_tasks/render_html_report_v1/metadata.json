@@ -1,0 +1,36 @@
+{
+    "task_id": "render_html_report_v1",
+    "name": "Render HTML Report",
+    "description": "Render an HTML report from a Jinja2 template file and context data, saving the output to a local HTML file.",
+    "input_schema": {
+        "template_path": "str",
+        "context_data": "dict"
+    },
+    "output_schema": {
+        "output_path": "str"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "jinja2"
+    ],
+    "tags": [
+        "report",
+        "html",
+        "template",
+        "output"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "template_path": "/tmp/templates/report.html",
+            "context_data": {
+                "title": "Q4 Report",
+                "data": []
+            }
+        }
+    ]
+}

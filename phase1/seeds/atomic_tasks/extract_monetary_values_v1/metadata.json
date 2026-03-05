@@ -1,0 +1,39 @@
+{
+    "task_id": "extract_monetary_values_v1",
+    "name": "Extract Monetary Values",
+    "description": "Extract all monetary amounts with their currency codes from raw text using a Bedrock LLM. Handles formats like $1,234.56, USD 100, 50 EUR, ₹10,000, etc.",
+    "input_schema": {
+        "raw_text": "str",
+        "model_id": "str"
+    },
+    "output_schema": {
+        "monetary_values": "list[dict]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "boto3",
+        "pydantic"
+    ],
+    "tags": [
+        "money",
+        "currency",
+        "nlp",
+        "extraction",
+        "llm"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "The deal was worth $1.5 million. Additional fees of EUR 250,000 apply.",
+            "model_id": ""
+        },
+        {
+            "raw_text": "Revenue of ₹10,00,000 and costs of USD 5,000.",
+            "model_id": ""
+        }
+    ]
+}

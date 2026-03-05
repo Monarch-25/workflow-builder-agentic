@@ -1,0 +1,27 @@
+# ── Core ─────────────────────────────────────────────────────────────────────
+pydantic>=2.0,<3.0
+pydantic-settings>=2.0,<3.0
+boto3>=1.34,<2.0
+redis>=5.0,<6.0
+numpy>=1.26,<3.0
+
+# ── File & Document Processing ───────────────────────────────────────────────
+pdfplumber>=0.10,<1.0
+camelot-py[cv]>=0.11,<1.0
+pytesseract>=0.3,<1.0
+Pillow>=10.0,<12.0
+openpyxl>=3.1,<4.0
+pandas>=2.1,<3.0
+
+# ── Web & Network ────────────────────────────────────────────────────────────
+httpx>=0.27,<1.0
+aiohttp>=3.9,<4.0
+beautifulsoup4>=4.12,<5.0
+lxml>=5.0,<6.0
+validators>=0.22,<1.0
+
+# ── NLP & Text ───────────────────────────────────────────────────────────────
+# NOTE: spaCy/langdetect removed — NLP tasks use Bedrock LLMs instead
+
+# ── Reporting ────────────────────────────────────────────────────────────────
+Jinja2>=3.1,<4.0

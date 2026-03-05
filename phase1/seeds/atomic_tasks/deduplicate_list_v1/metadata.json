@@ -1,0 +1,46 @@
+{
+    "task_id": "deduplicate_list_v1",
+    "name": "Deduplicate List",
+    "description": "Remove duplicates from a list while preserving the original order of first occurrences. Returns the unique items and the count of removed duplicates.",
+    "input_schema": {
+        "items": "list"
+    },
+    "output_schema": {
+        "unique_items": "list",
+        "removed_count": "int"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "deduplicate",
+        "list",
+        "data",
+        "transform"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "items": [
+                "a",
+                "b",
+                "a",
+                "c",
+                "b",
+                "d"
+            ]
+        },
+        {
+            "items": [
+                1,
+                2,
+                2,
+                3,
+                1
+            ]
+        }
+    ]
+}

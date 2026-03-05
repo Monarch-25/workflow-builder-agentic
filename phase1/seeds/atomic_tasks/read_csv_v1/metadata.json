@@ -1,0 +1,39 @@
+{
+    "task_id": "read_csv_v1",
+    "name": "Read CSV",
+    "description": "Read a CSV file with configurable delimiter and automatic type inference, returning the data as a list of records along with column names and row count.",
+    "input_schema": {
+        "file_path": "str",
+        "delimiter": "str"
+    },
+    "output_schema": {
+        "records": "list[dict]",
+        "columns": "list[str]",
+        "row_count": "int"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "pandas"
+    ],
+    "tags": [
+        "csv",
+        "read",
+        "io",
+        "data"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "file_path": "/tmp/input_files/transactions.csv",
+            "delimiter": ","
+        },
+        {
+            "file_path": "/tmp/input_files/data.tsv",
+            "delimiter": "\t"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "task_id": "extract_tables_from_pdf_v1",
+    "name": "Extract Tables from PDF",
+    "description": "Extract tables from a PDF file using camelot with lattice or stream flavor, returning structured table data as a list of JSON records.",
+    "input_schema": {
+        "file_path": "str",
+        "flavor": "str"
+    },
+    "output_schema": {
+        "tables_json": "list[list[dict]]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "camelot-py"
+    ],
+    "tags": [
+        "pdf",
+        "table",
+        "extraction"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "file_path": "/tmp/input_files/statement.pdf",
+            "flavor": "lattice"
+        },
+        {
+            "file_path": "/tmp/input_files/report.pdf",
+            "flavor": "stream"
+        }
+    ]
+}

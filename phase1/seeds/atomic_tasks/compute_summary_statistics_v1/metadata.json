@@ -1,0 +1,37 @@
+{
+    "task_id": "compute_summary_statistics_v1",
+    "name": "Compute Summary Statistics",
+    "description": "Compute mean, median, standard deviation, min, max, and percentiles (25th, 50th, 75th) for a list of numeric values.",
+    "input_schema": {
+        "values": "list[float]"
+    },
+    "output_schema": {
+        "stats": "dict"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "numpy"
+    ],
+    "tags": [
+        "statistics",
+        "summary",
+        "analytics",
+        "finance"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "values": [
+                10.0,
+                20.0,
+                30.0,
+                40.0,
+                50.0
+            ]
+        }
+    ]
+}

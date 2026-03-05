@@ -1,0 +1,39 @@
+{
+    "task_id": "classify_document_type_v1",
+    "name": "Classify Document Type",
+    "description": "Use a Bedrock LLM to classify a document into one of: invoice, contract, report, statement, regulatory, correspondence, or other. Returns the type and confidence score.",
+    "input_schema": {
+        "raw_text": "str",
+        "model_id": "str"
+    },
+    "output_schema": {
+        "document_type": "str",
+        "confidence": "float"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "boto3",
+        "pydantic"
+    ],
+    "tags": [
+        "classify",
+        "document",
+        "nlp",
+        "llm"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "INVOICE #12345 Date: 2024-01-15 Bill To: Acme Corp...",
+            "model_id": ""
+        },
+        {
+            "raw_text": "This agreement is entered into between Party A and Party B...",
+            "model_id": ""
+        }
+    ]
+}

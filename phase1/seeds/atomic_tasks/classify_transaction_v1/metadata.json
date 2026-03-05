@@ -1,0 +1,46 @@
+{
+    "task_id": "classify_transaction_v1",
+    "name": "Classify Transaction",
+    "description": "Use a Bedrock LLM to classify a transaction description into one of the provided categories based on the description and amount.",
+    "input_schema": {
+        "description": "str",
+        "amount": "float",
+        "categories": "list[str]",
+        "model_id": "str"
+    },
+    "output_schema": {
+        "category": "str",
+        "confidence": "float"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "boto3",
+        "pydantic"
+    ],
+    "tags": [
+        "classify",
+        "transaction",
+        "banking",
+        "llm",
+        "finance"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "description": "ATM withdrawal at SBI Main Branch",
+            "amount": 5000.0,
+            "categories": [
+                "atm",
+                "transfer",
+                "payment",
+                "fee",
+                "interest"
+            ],
+            "model_id": ""
+        }
+    ]
+}

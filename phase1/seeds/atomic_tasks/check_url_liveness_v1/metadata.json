@@ -1,0 +1,39 @@
+{
+    "task_id": "check_url_liveness_v1",
+    "name": "Check URL Liveness",
+    "description": "Perform async HEAD requests to a list of URLs to classify them as live or dead, with configurable timeout. Returns live URLs, failed URLs, and an error map.",
+    "input_schema": {
+        "urls": "list[str]",
+        "timeout_sec": "int"
+    },
+    "output_schema": {
+        "live_urls": "list[str]",
+        "failed_urls": "list[str]",
+        "error_map": "dict"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "aiohttp"
+    ],
+    "tags": [
+        "url",
+        "http",
+        "liveness",
+        "check",
+        "web"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "urls": [
+                "https://example.com",
+                "https://invalid.test"
+            ],
+            "timeout_sec": 10
+        }
+    ]
+}

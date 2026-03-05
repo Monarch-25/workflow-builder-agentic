@@ -1,0 +1,35 @@
+{
+    "task_id": "classify_url_failure_v1",
+    "name": "Classify URL Failure",
+    "description": "Classify why URLs failed: DNS failure, timeout, HTTP 4xx/5xx, SSL error, or unknown. Takes a list of failed URLs and an error map.",
+    "input_schema": {
+        "failed_urls": "list[str]",
+        "error_map": "dict"
+    },
+    "output_schema": {
+        "failure_report": "dict"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "url",
+        "classify",
+        "error",
+        "web"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "failed_urls": [
+                "https://bad.test"
+            ],
+            "error_map": {
+                "https://bad.test": "DNS_FAILURE"
+            }
+        }
+    ]
+}

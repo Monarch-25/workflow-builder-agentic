@@ -1,0 +1,45 @@
+{
+    "task_id": "validate_dataframe_schema_v1",
+    "name": "Validate DataFrame Schema",
+    "description": "Validate a list of records against an expected schema including column presence, type checks, and null-rate thresholds. Returns a validation report.",
+    "input_schema": {
+        "records": "list[dict]",
+        "expected_schema": "dict"
+    },
+    "output_schema": {
+        "is_valid": "bool",
+        "validation_report": "list[dict]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "pandas"
+    ],
+    "tags": [
+        "validate",
+        "schema",
+        "data",
+        "quality"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "records": [
+                {
+                    "name": "Alice",
+                    "age": 30
+                }
+            ],
+            "expected_schema": {
+                "columns": [
+                    "name",
+                    "age"
+                ],
+                "max_null_rate": 0.1
+            }
+        }
+    ]
+}

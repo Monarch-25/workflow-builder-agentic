@@ -1,0 +1,38 @@
+{
+    "task_id": "extract_dates_from_text_v1",
+    "name": "Extract Dates from Text",
+    "description": "Extract all date references from raw text using a Bedrock LLM, normalising them to ISO 8601 format strings. Handles natural language dates like 'next Friday' or 'Q3 2024'.",
+    "input_schema": {
+        "raw_text": "str",
+        "model_id": "str"
+    },
+    "output_schema": {
+        "dates": "list[str]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "boto3",
+        "pydantic"
+    ],
+    "tags": [
+        "date",
+        "nlp",
+        "extraction",
+        "llm"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "The meeting is on March 15, 2025 and the deadline is next Friday.",
+            "model_id": "anthropic.claude-sonnet-4-5"
+        },
+        {
+            "raw_text": "Filed on 01/22/2024. Effective Q3 FY2024.",
+            "model_id": ""
+        }
+    ]
+}

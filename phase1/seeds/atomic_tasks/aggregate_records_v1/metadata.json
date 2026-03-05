@@ -1,0 +1,46 @@
+{
+    "task_id": "aggregate_records_v1",
+    "name": "Aggregate Records",
+    "description": "Group a list of records by a field and apply an aggregate function (sum, mean, count, max, min) to another field.",
+    "input_schema": {
+        "records": "list[dict]",
+        "group_by": "str",
+        "agg_field": "str",
+        "agg_func": "str"
+    },
+    "output_schema": {
+        "aggregated_records": "list[dict]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "pandas"
+    ],
+    "tags": [
+        "aggregate",
+        "group",
+        "data",
+        "transform"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "records": [
+                {
+                    "dept": "A",
+                    "salary": 50000
+                },
+                {
+                    "dept": "A",
+                    "salary": 60000
+                }
+            ],
+            "group_by": "dept",
+            "agg_field": "salary",
+            "agg_func": "mean"
+        }
+    ]
+}

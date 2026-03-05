@@ -1,0 +1,39 @@
+{
+    "task_id": "detect_language_v1",
+    "name": "Detect Language",
+    "description": "Detect the language of the input text using a Bedrock LLM and return the ISO 639-1 language code along with a confidence score.",
+    "input_schema": {
+        "raw_text": "str",
+        "model_id": "str"
+    },
+    "output_schema": {
+        "language_code": "str",
+        "confidence": "float"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "boto3",
+        "pydantic"
+    ],
+    "tags": [
+        "language",
+        "detection",
+        "nlp",
+        "llm"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "This is an English document about banking regulations.",
+            "model_id": ""
+        },
+        {
+            "raw_text": "Dies ist ein deutsches Dokument.",
+            "model_id": ""
+        }
+    ]
+}

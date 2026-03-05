@@ -1,0 +1,37 @@
+{
+    "task_id": "flatten_nested_dict_v1",
+    "name": "Flatten Nested Dict",
+    "description": "Flatten a nested dictionary into a single-level dictionary with dot-notation keys.",
+    "input_schema": {
+        "nested_dict": "dict"
+    },
+    "output_schema": {
+        "flat_dict": "dict"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "flatten",
+        "dict",
+        "data",
+        "transform"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "nested_dict": {
+                "a": {
+                    "b": 1,
+                    "c": {
+                        "d": 2
+                    }
+                },
+                "e": 3
+            }
+        }
+    ]
+}

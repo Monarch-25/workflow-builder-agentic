@@ -1,0 +1,54 @@
+{
+    "task_id": "detect_anomalies_in_series_v1",
+    "name": "Detect Anomalies in Series",
+    "description": "Detect anomalies in a numeric series using IQR or Z-score methods with a configurable threshold. Returns anomalous data points with their indices and scores.",
+    "input_schema": {
+        "values": "list[float]",
+        "method": "str",
+        "threshold": "float"
+    },
+    "output_schema": {
+        "anomalies": "list[dict]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "numpy"
+    ],
+    "tags": [
+        "anomaly",
+        "detection",
+        "statistics",
+        "finance"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "values": [
+                10,
+                12,
+                11,
+                100,
+                13,
+                12
+            ],
+            "method": "zscore",
+            "threshold": 2.0
+        },
+        {
+            "values": [
+                10,
+                12,
+                11,
+                100,
+                13,
+                12
+            ],
+            "method": "iqr",
+            "threshold": 1.5
+        }
+    ]
+}

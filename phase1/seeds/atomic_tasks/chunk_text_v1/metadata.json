@@ -1,0 +1,38 @@
+{
+    "task_id": "chunk_text_v1",
+    "name": "Chunk Text",
+    "description": "Split large text into overlapping chunks of a configurable size for downstream processing such as embedding or summarization.",
+    "input_schema": {
+        "raw_text": "str",
+        "chunk_size": "int",
+        "overlap": "int"
+    },
+    "output_schema": {
+        "chunks": "list[str]"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "chunk",
+        "text",
+        "split",
+        "preprocessing"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "Very long document text...",
+            "chunk_size": 1000,
+            "overlap": 100
+        },
+        {
+            "raw_text": "Short text",
+            "chunk_size": 500,
+            "overlap": 50
+        }
+    ]
+}

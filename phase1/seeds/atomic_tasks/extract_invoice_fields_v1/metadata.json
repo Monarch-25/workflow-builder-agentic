@@ -1,0 +1,37 @@
+{
+    "task_id": "extract_invoice_fields_v1",
+    "name": "Extract Invoice Fields",
+    "description": "Use a Bedrock LLM to extract structured invoice fields (vendor, date, total amount, line items) from raw text extracted from an invoice document.",
+    "input_schema": {
+        "raw_text": "str",
+        "model_id": "str"
+    },
+    "output_schema": {
+        "vendor": "str",
+        "date": "str",
+        "total_amount": "float",
+        "line_items": "list[dict]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "boto3",
+        "pydantic"
+    ],
+    "tags": [
+        "invoice",
+        "extraction",
+        "finance",
+        "llm"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "INVOICE #12345\\nVendor: Acme Corp\\nDate: 2024-01-15\\nTotal: $1,500.00\\nItem 1: Widget x10 @ $100\\nItem 2: Gadget x5 @ $100",
+            "model_id": ""
+        }
+    ]
+}

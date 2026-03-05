@@ -1,0 +1,38 @@
+{
+    "task_id": "format_as_markdown_table_v1",
+    "name": "Format as Markdown Table",
+    "description": "Convert a list of records (list of dicts) to a formatted Markdown table string.",
+    "input_schema": {
+        "records": "list[dict]"
+    },
+    "output_schema": {
+        "markdown_table": "str"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "markdown",
+        "table",
+        "format",
+        "output"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "records": [
+                {
+                    "name": "Alice",
+                    "score": 95
+                },
+                {
+                    "name": "Bob",
+                    "score": 87
+                }
+            ]
+        }
+    ]
+}

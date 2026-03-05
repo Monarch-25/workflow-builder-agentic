@@ -1,0 +1,47 @@
+{
+    "task_id": "join_two_datasets_v1",
+    "name": "Join Two Datasets",
+    "description": "Perform an inner or left join on two lists of records using a shared key field.",
+    "input_schema": {
+        "left_records": "list[dict]",
+        "right_records": "list[dict]",
+        "join_key": "str",
+        "join_type": "str"
+    },
+    "output_schema": {
+        "joined_records": "list[dict]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "pandas"
+    ],
+    "tags": [
+        "join",
+        "merge",
+        "data",
+        "transform"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "left_records": [
+                {
+                    "id": 1,
+                    "name": "A"
+                }
+            ],
+            "right_records": [
+                {
+                    "id": 1,
+                    "value": 100
+                }
+            ],
+            "join_key": "id",
+            "join_type": "inner"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "task_id": "save_to_json_v1",
+    "name": "Save to JSON",
+    "description": "Write any dict or list to a local JSON file and return the output path along with the number of bytes written.",
+    "input_schema": {
+        "data": "any",
+        "output_path": "str"
+    },
+    "output_schema": {
+        "output_path": "str",
+        "bytes_written": "int"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "json",
+        "save",
+        "write",
+        "io"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "data": {
+                "key": "value"
+            },
+            "output_path": "/tmp/output/result.json"
+        },
+        {
+            "data": [
+                1,
+                2,
+                3
+            ],
+            "output_path": "/tmp/output/list.json"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "task_id": "extract_emails_from_text_v1",
+    "name": "Extract Emails from Text",
+    "description": "Extract all email addresses from raw text using regex pattern matching with RFC 5322 compliant patterns.",
+    "input_schema": {
+        "raw_text": "str"
+    },
+    "output_schema": {
+        "emails": "list[str]"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "email",
+        "text",
+        "extraction",
+        "regex"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "Contact john@example.com or support@test.org for help."
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "task_id": "summarize_text_v1",
+    "name": "Summarize Text",
+    "description": "Generate a concise summary of the input text using a Bedrock LLM with a configurable maximum word count.",
+    "input_schema": {
+        "raw_text": "str",
+        "max_words": "int",
+        "model_id": "str"
+    },
+    "output_schema": {
+        "summary": "str"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "boto3",
+        "pydantic"
+    ],
+    "tags": [
+        "summarize",
+        "nlp",
+        "llm",
+        "text"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "raw_text": "Long document text here...",
+            "max_words": 100,
+            "model_id": ""
+        },
+        {
+            "raw_text": "Annual report content...",
+            "max_words": 50,
+            "model_id": ""
+        }
+    ]
+}

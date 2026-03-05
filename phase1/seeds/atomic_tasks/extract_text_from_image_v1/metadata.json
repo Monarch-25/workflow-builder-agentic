@@ -1,0 +1,36 @@
+{
+    "task_id": "extract_text_from_image_v1",
+    "name": "Extract Text from Image",
+    "description": "Perform OCR on a PNG or JPG image file using pytesseract to extract raw text content and return the text along with an estimated confidence score.",
+    "input_schema": {
+        "file_path": "str"
+    },
+    "output_schema": {
+        "raw_text": "str",
+        "confidence": "float"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "pytesseract",
+        "pillow"
+    ],
+    "tags": [
+        "image",
+        "ocr",
+        "text",
+        "extraction"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "file_path": "/tmp/input_files/scanned_invoice.png"
+        },
+        {
+            "file_path": "/tmp/input_files/receipt.jpg"
+        }
+    ]
+}

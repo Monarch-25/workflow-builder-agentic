@@ -1,0 +1,34 @@
+{
+    "task_id": "log_error_v1",
+    "name": "Log Error",
+    "description": "Append a structured error entry (with timestamp, error message, and context) to a local error log file.",
+    "input_schema": {
+        "error_message": "str",
+        "context": "dict"
+    },
+    "output_schema": {
+        "log_path": "str"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "error",
+        "log",
+        "debug",
+        "output"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "error_message": "Failed to extract text from page 5",
+            "context": {
+                "file_path": "/tmp/report.pdf",
+                "page": 5
+            }
+        }
+    ]
+}

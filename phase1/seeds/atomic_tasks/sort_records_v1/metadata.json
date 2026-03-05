@@ -1,0 +1,46 @@
+{
+    "task_id": "sort_records_v1",
+    "name": "Sort Records",
+    "description": "Sort a list of dicts by one or more fields in ascending or descending order.",
+    "input_schema": {
+        "records": "list[dict]",
+        "sort_keys": "list[str]",
+        "ascending": "bool"
+    },
+    "output_schema": {
+        "sorted_records": "list[dict]"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "pandas"
+    ],
+    "tags": [
+        "sort",
+        "order",
+        "data",
+        "transform"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "records": [
+                {
+                    "name": "B",
+                    "age": 25
+                },
+                {
+                    "name": "A",
+                    "age": 30
+                }
+            ],
+            "sort_keys": [
+                "name"
+            ],
+            "ascending": true
+        }
+    ]
+}

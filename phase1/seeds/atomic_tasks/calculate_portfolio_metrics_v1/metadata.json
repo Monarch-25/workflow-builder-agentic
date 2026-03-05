@@ -1,0 +1,41 @@
+{
+    "task_id": "calculate_portfolio_metrics_v1",
+    "name": "Calculate Portfolio Metrics",
+    "description": "Calculate return, volatility, and Sharpe ratio from a price series and risk-free rate using numpy-based numerical computation.",
+    "input_schema": {
+        "price_series": "list[float]",
+        "risk_free_rate": "float"
+    },
+    "output_schema": {
+        "returns": "list[float]",
+        "volatility": "float",
+        "sharpe_ratio": "float"
+    },
+    "script_path": "script.py",
+    "dependencies": [
+        "numpy"
+    ],
+    "tags": [
+        "portfolio",
+        "finance",
+        "metrics",
+        "sharpe"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "price_series": [
+                100.0,
+                102.0,
+                101.5,
+                103.0,
+                105.0
+            ],
+            "risk_free_rate": 0.02
+        }
+    ]
+}

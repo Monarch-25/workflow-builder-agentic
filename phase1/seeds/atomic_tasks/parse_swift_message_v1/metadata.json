@@ -1,0 +1,29 @@
+{
+    "task_id": "parse_swift_message_v1",
+    "name": "Parse SWIFT Message",
+    "description": "Parse MT103/MT202 SWIFT message fields from raw text into a structured dict using regex pattern matching for standard SWIFT field tags.",
+    "input_schema": {
+        "swift_raw_text": "str"
+    },
+    "output_schema": {
+        "parsed_fields": "dict"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "swift",
+        "banking",
+        "parse",
+        "finance"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "swift_raw_text": ":20:REF123456\\n:32A:240115USD50000,00\\n:50K:/ACC12345\\nJohn Doe"
+        }
+    ]
+}

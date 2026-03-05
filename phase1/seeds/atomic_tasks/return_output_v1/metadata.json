@@ -1,0 +1,39 @@
+{
+    "task_id": "return_output_v1",
+    "name": "Return Output",
+    "description": "Terminal node that pretty-prints the final workflow result to stdout and optionally saves it to a JSON file. Used as the last step in any workflow.",
+    "input_schema": {
+        "result": "any",
+        "label": "str"
+    },
+    "output_schema": {},
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "output",
+        "terminal",
+        "report",
+        "display"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "result": {
+                "urls": [
+                    "https://example.com"
+                ]
+            },
+            "label": "Live URLs"
+        },
+        {
+            "result": {
+                "summary": "Q4 results exceeded expectations"
+            },
+            "label": "Report Summary"
+        }
+    ]
+}

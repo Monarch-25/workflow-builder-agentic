@@ -1,0 +1,47 @@
+{
+    "task_id": "filter_list_by_pattern_v1",
+    "name": "Filter List by Pattern",
+    "description": "Filter a list of strings using a regex pattern with include or exclude mode.",
+    "input_schema": {
+        "items": "list[str]",
+        "pattern": "str",
+        "mode": "str"
+    },
+    "output_schema": {
+        "filtered_items": "list[str]"
+    },
+    "script_path": "script.py",
+    "dependencies": [],
+    "tags": [
+        "filter",
+        "regex",
+        "list",
+        "data",
+        "transform"
+    ],
+    "author": "system",
+    "created_at": "2025-01-01T00:00:00",
+    "verified": true,
+    "version": 1,
+    "usage_count": 0,
+    "usage_examples": [
+        {
+            "items": [
+                "alpha",
+                "beta",
+                "gamma"
+            ],
+            "pattern": "^a",
+            "mode": "include"
+        },
+        {
+            "items": [
+                "test1",
+                "prod1",
+                "test2"
+            ],
+            "pattern": "^test",
+            "mode": "exclude"
+        }
+    ]
+}
