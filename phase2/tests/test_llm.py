@@ -6,6 +6,7 @@ import json
 import unittest
 
 from phase2.core.config import Config
+from phase2.core.intent_infer import InferredIntent, IntentType
 from phase2.core.llm import BedrockClaudeLLM
 
 
@@ -31,7 +32,56 @@ class LLMTests(unittest.TestCase):
         self.assertIn("anthropic_beta", payload)
         self.assertEqual(payload["messages"][0]["role"], "user")
 
+    def test_converse_structured_request_uses_json_schema_output(self) -> None:
+        llm = BedrockClaudeLLM(DummyBedrockClient(), Config())
+        request = llm.build_converse_structured_request(
+            messages=[{"role": "user", "content": [{"text": "hello"}]}],
+            system="system prompt",
+            output_schema=InferredIntent,
+            schema_name="inferred_intent",
+        )
+
+        self.assertIn("outputConfig", request)
+        output_config = request["outputConfig"]["textFormat"]
+        self.assertEqual(output_config["type"], "json_schema")
+        self.assertEqual(
+            output_config["structure"]["jsonSchema"]["name"],
+            "inferred_intent",
+        )
+
+    def test_converse_structured_parses_json_response(self) -> None:
+        class StructuredClient:
+            def converse(self, **_: object) -> dict[str, object]:
+                return {
+                    "output": {
+                        "message": {
+                            "content": [
+                                {
+                                    "text": json.dumps(
+                                        {
+                                            "intent_type": IntentType.APPROVE.value,
+                                            "confidence": 0.99,
+                                            "payload": {},
+                                            "user_message_rephrased": "You approve the plan.",
+                                        }
+                                    )
+                                }
+                            ]
+                        }
+                    }
+                }
+
+        llm = BedrockClaudeLLM(StructuredClient(), Config())
+        intent = llm.converse_structured(
+            system="system prompt",
+            messages=[{"role": "user", "content": [{"text": "approve"}]}],
+            output_schema=InferredIntent,
+            schema_name="inferred_intent",
+        )
+
+        self.assertEqual(intent.intent_type, IntentType.APPROVE)
+        self.assertEqual(intent.confidence, 0.99)
+
 
 if __name__ == "__main__":
     unittest.main()
-

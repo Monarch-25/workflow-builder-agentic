@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -18,6 +19,7 @@ from phase1.repo.schema import AtomicTask
 from phase1.repo.vector_index import ensure_vss_index
 
 from phase2.core import BedrockClaudeLLM, Config, TitanEmbedder
+from phase2.chat import PlanningFormatter, PlanningREPL
 from phase2.orchestrator import IntentParser, PlanNegotiator
 from phase2.orchestrator.models import OrchestrationTurn
 
@@ -34,6 +36,7 @@ class Phase2Runtime:
     repo: LocalTaskRepo
     parser: IntentParser
     negotiator: PlanNegotiator
+    repl: PlanningREPL
 
 
 def ensure_base_dirs(cfg: Config) -> None:
@@ -111,6 +114,7 @@ def bootstrap_runtime(
     llm = BedrockClaudeLLM(bedrock_client, cfg)
     parser = IntentParser(repo, cfg=cfg, llm=llm)
     negotiator = PlanNegotiator(parser)
+    repl = PlanningREPL(negotiator, formatter=PlanningFormatter())
     return Phase2Runtime(
         cfg=cfg,
         redis_client=redis_client,
@@ -120,6 +124,7 @@ def bootstrap_runtime(
         repo=repo,
         parser=parser,
         negotiator=negotiator,
+        repl=repl,
     )
 
 
@@ -180,6 +185,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Print the prepared Bedrock InvokeModel request payload.",
     )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Print JSON instead of entering the interactive planning UX.",
+    )
     return parser
 
 
@@ -195,12 +205,19 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     answers = parse_answer_pairs(args.answer)
+    if not args.json and not answers and sys.stdin.isatty():
+        runtime.repl.run(args.request)
+        return 0
+
     turn = run_orchestration(
         args.request,
         runtime=runtime,
         clarification_answers=answers or None,
     )
-    print(render_turn(turn))
+    if args.json:
+        print(render_turn(turn))
+    else:
+        print(runtime.repl.formatter.format_turn(turn))
     return 0
 
 

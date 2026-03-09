@@ -202,3 +202,69 @@ class BedrockClaudeLLM:
             logger.info("Bedrock converse request payload: %s", json.dumps(request))
         return self.client.converse(**request)
 
+    def build_converse_structured_request(
+        self,
+        *,
+        messages: list[dict],
+        system: str,
+        output_schema: type,
+        max_tokens: int = 4096,
+        enable_advanced_tools: bool = False,
+        schema_name: str = "structured_output",
+        schema_description: str = "Return JSON matching the requested schema.",
+    ) -> dict[str, Any]:
+        """Build a ``Converse`` request with Bedrock structured output enabled."""
+        request = self.build_converse_request(
+            messages=messages,
+            system=system,
+            tools=None,
+            max_tokens=max_tokens,
+            enable_advanced_tools=enable_advanced_tools,
+        )
+        request["outputConfig"] = {
+            "textFormat": {
+                "type": "json_schema",
+                "structure": {
+                    "jsonSchema": {
+                        "name": schema_name,
+                        "description": schema_description,
+                        "schema": json.dumps(output_schema.model_json_schema()),
+                    }
+                },
+            }
+        }
+        return request
+
+    def converse_structured(
+        self,
+        *,
+        system: str,
+        messages: list[dict],
+        output_schema: type,
+        max_tokens: int = 4096,
+        enable_advanced_tools: bool = False,
+        schema_name: str = "structured_output",
+        schema_description: str = "Return JSON matching the requested schema.",
+    ) -> Any:
+        """Run a structured ``Converse`` call and validate the JSON response."""
+        request = self.build_converse_structured_request(
+            messages=messages,
+            system=system,
+            output_schema=output_schema,
+            max_tokens=max_tokens,
+            enable_advanced_tools=enable_advanced_tools,
+            schema_name=schema_name,
+            schema_description=schema_description,
+        )
+        if self.log_requests:
+            logger.info(
+                "Bedrock converse structured request payload: %s",
+                json.dumps(request),
+            )
+        response = self.client.converse(**request)
+        content = response.get("output", {}).get("message", {}).get("content", [])
+        for block in content:
+            text = block.get("text")
+            if text:
+                return output_schema.model_validate_json(text)
+        raise ValueError("Structured Converse response did not include a text block.")

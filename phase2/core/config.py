@@ -58,6 +58,10 @@ class Config:
         "ORCHESTRATOR_DEFAULT_TRANSPORT",
         "invoke_model",
     )
+    ORCHESTRATOR_INTENT_BACKEND: str = os.getenv(
+        "ORCHESTRATOR_INTENT_BACKEND",
+        "bedrock",
+    )
     ORCHESTRATOR_ENABLE_PROMPT_CACHING: bool = _get_bool(
         "ORCHESTRATOR_ENABLE_PROMPT_CACHING",
         False,

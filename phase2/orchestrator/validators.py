@@ -25,7 +25,7 @@ def _is_const_binding(binding: str) -> bool:
     return binding.startswith("$const:")
 
 
-def _types_compatible(source_type: str, target_type: str) -> bool:
+def types_compatible(source_type: str, target_type: str) -> bool:
     if source_type == target_type:
         return True
     aliases = {
@@ -143,7 +143,7 @@ def validate_plan(
                             )
                         )
                         continue
-                    if not _types_compatible(available_fields[binding], input_type):
+                    if not types_compatible(available_fields[binding], input_type):
                         issues.append(
                             PlanIssue(
                                 code="binding_type_mismatch",
@@ -156,7 +156,7 @@ def validate_plan(
                             )
                         )
                     continue
-                if input_name in available_fields and _types_compatible(
+                if input_name in available_fields and types_compatible(
                     available_fields[input_name], input_type
                 ):
                     continue
@@ -190,4 +190,3 @@ def validate_plan(
             )
         )
     return issues
-

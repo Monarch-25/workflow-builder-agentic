@@ -313,6 +313,21 @@ class IntentParser:
         self.brain = brain or HeuristicPlanningBrain()
         self.system_prompt = ORCHESTRATOR_SYSTEM
 
+    @staticmethod
+    def default_user_inputs() -> dict[str, str]:
+        """Return permissive user-input types used for offline validation."""
+        return {
+            "file_path": "str",
+            "raw_text": "str",
+            "text": "str",
+            "urls": "list[str]",
+            "records": "list[dict]",
+            "data": "dict",
+            "items": "list",
+            "result": "any",
+            "label": "str",
+        }
+
     def load_all_tasks(self) -> list[AtomicTask]:
         """Load all registered repo tasks in stable order."""
         return [self.repo.get_task(task_id) for task_id in sorted(self.repo.list_all_tasks())]
@@ -448,18 +463,7 @@ class IntentParser:
             task_ids=[step.task_id for step in plan.task_list],
         )
 
-        issues = validate_plan(
-            plan,
-            self.repo,
-            user_inputs={
-                "file_path": "str",
-                "raw_text": "str",
-                "text": "str",
-                "urls": "list[str]",
-                "records": "list[dict]",
-                "data": "dict",
-            },
-        )
+        issues = self.validate_proposed_plan(plan)
 
         if issues:
             trace.add(
@@ -488,18 +492,7 @@ class IntentParser:
                 )
             if isinstance(revised, ProposedPlan):
                 plan = revised
-                issues = validate_plan(
-                    plan,
-                    self.repo,
-                    user_inputs={
-                        "file_path": "str",
-                        "raw_text": "str",
-                        "text": "str",
-                        "urls": "list[str]",
-                        "records": "list[dict]",
-                        "data": "dict",
-                    },
-                )
+                issues = self.validate_proposed_plan(plan)
 
         state = "awaiting_user_confirmation" if not issues else "validation_failed"
         return OrchestrationTurn(
@@ -513,3 +506,10 @@ class IntentParser:
             trace=trace.events,
         )
 
+    def validate_proposed_plan(self, plan: ProposedPlan) -> list[PlanIssue]:
+        """Validate a proposed plan using the parser's default inputs."""
+        return validate_plan(
+            plan,
+            self.repo,
+            user_inputs=self.default_user_inputs(),
+        )
